@@ -194,22 +194,6 @@ pub struct UserSecured {
     pub policy: AccessPolicy,
 }
 
-impl relay::NodeType for UserSecured {
-    type Cursor = String;
-
-    fn cursor(&self) -> Self::Cursor {
-        self.id.to_string()
-    }
-
-    fn connection_type_name() -> &'static str {
-        "UserSecuredConnection"
-    }
-
-    fn edge_type_name() -> &'static str {
-        "UserSecuredEdge"
-    }
-}
-
 #[derive(Validate, GraphQLInputObject)]
 pub struct RequestInvitationInput {
     #[validate(email(code = "email", message = "Invalid email address"))]
